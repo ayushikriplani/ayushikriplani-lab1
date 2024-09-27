@@ -14,23 +14,33 @@ public class Rotor {
     
     public boolean rotate(){
         //String to char array 
-
-        rotorValues input = new rotorValues (); 
-        
-        //char array at the last index move to the top 
-        //loop through and do array[i] = array [i+1]
-        //boolean check if it equals the current character 
-        //TODO
-               
+        char [] convert = rotorValues.toCharArray(); 
+        char save = convert [convert.length]; 
+        convert[0] = convert [convert.length]; 
+        for(int i = 1; i< convert.length -1; i++){
+            convert[i] = convert [i+1]; 
+        }
+        rotorValues .equals(convert.toString()); 
+        if(save == convert [0]){
+            return true;
+        }
+        return false;          
     }
     
 
     public int indexOf(char c){
-        //TODO
+        char [] convert = rotorValues.toCharArray(); 
+        for (int i = 0; i<convert.length; i++){
+            if (convert[i] == c){
+                return i; 
+            }
+        }
+        return -1;
     }
 
     public char charAt(int idx){
-        //TODO
+        char [] convert = rotorValues. toCharArray(); 
+        return convert[idx]; 
     }
 }
     
