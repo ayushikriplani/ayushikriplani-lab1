@@ -13,18 +13,12 @@ public class Rotor {
     }
     
     public boolean rotate(){
-        //String to char array 
-        char [] convert = rotorValues.toCharArray(); 
-        char save = convert [convert.length]; 
-        convert[0] = convert [convert.length]; 
-        for(int i = 1; i< convert.length -1; i++){
-            convert[i] = convert [i+1]; 
-        }
-        rotorValues .equals(convert.toString()); 
-        if(save == convert [0]){
-            return true;
-        }
-        return false;          
+        char endChar = rotorValues.charAt(rotorValues.length()-1); 
+        rotorValues = endChar + rotorValues.substring(0, rotorValues.length()-1);
+        if (rotorValues.charAt(0)==startChar){
+            return true; 
+        }   
+        return false;     
     }
     
 
@@ -39,7 +33,7 @@ public class Rotor {
     }
 
     public char charAt(int idx){
-        char [] convert = rotorValues. toCharArray(); 
+        char [] convert = rotorValues.toCharArray(); 
         return convert[idx]; 
     }
 }
