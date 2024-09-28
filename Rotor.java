@@ -15,7 +15,7 @@ public class Rotor {
     public boolean rotate(){
         char endChar = rotorValues.charAt(rotorValues.length()-1); 
         rotorValues = endChar + rotorValues.substring(0, rotorValues.length()-1);
-        if (rotorValues.charAt(0)==startChar){
+        if (endChar==startChar){
             return true; 
         }   
         return false;     

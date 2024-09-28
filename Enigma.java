@@ -19,14 +19,22 @@ public class Enigma{
     }
 
 
-    public String decrypt(String message){     
+    public String decrypt(String message){ 
+        //initialize empty string     
         String decryptedString = new String ("");  
+        //loop through the message 
         for (int i = 0; i< message.length(); i++){
+            //find the same letter in the outer rotor 
             int step1 = rotors[2].indexOf(message.charAt(i)); 
+            //find the corresponding letter in the middle rotor at the same index
             char step2 = rotors[1].charAt(step1); 
+            //find the index of that letter in the outer rotor 
             int step3 = rotors[2].indexOf(step2); 
+            //find the corresponding letter in the inner rotor at the same index
             char step4 = rotors[0].charAt(step3);
+            //append the letter to the String to create decrypted string 
             decryptedString = decryptedString + step4; 
+            //rotate the rotor 
             rotate(); 
         }
         return decryptedString; 
@@ -35,13 +43,21 @@ public class Enigma{
 
     
     public String encrypt(String message){
+        //initialize empty string 
         String encryptedString = new String ("");
+        //loop through messsage 
         for (int i = 0; i< message.length(); i++){
+            //find same letter in inner rotor as message
             int step1 = rotors[0].indexOf(message.charAt(i)); 
+            //find corresponding letter in outer rotor at same index
             char step2 = rotors[2].charAt(step1); 
+            //find the index of that letter in middle rotor 
             int step3 = rotors[1].indexOf(step2); 
+            //find the corresponding letter in the outer rotor at the same index
             char step4 = rotors[2].charAt(step3);
+            //append the letter to the String to create encrypted string 
             encryptedString = encryptedString + step4; 
+            //rotate the rotor 
             rotate(); 
         }
         return encryptedString; 
