@@ -18,10 +18,9 @@ public class Enigma{
         
     }
 
-
     public String decrypt(String message){        
         char [] convert = message.toCharArray(); 
-        char [] decryptArray = new char[message.length()]; 
+        char [] decryptArray = new char[message.length()];
         for(int i = 0; i<convert.length; i++){
             int step1 = rotors[2].indexOf(convert[i]); 
             char step2 = rotors[1].charAt(step1); 
@@ -29,14 +28,14 @@ public class Enigma{
             char step4 = rotors[0].charAt(step3); 
             decryptArray[i]= step4; 
             rotate();
+            System.out.println(step4);
        }
-       String decryptString = decryptArray.toString(); 
+       String decryptString = new String(decryptArray);
+       System.out.println(decryptString);
        return decryptString; 
 
     }
 
-
-    
     public String encrypt(String message){
        char [] convert = message.toCharArray(); 
        char [] encryptArray = new char[message.length()]; 
@@ -48,7 +47,7 @@ public class Enigma{
             encryptArray[i]= step4; 
             rotate();
        }
-       String encryptString = encryptArray.toString(); 
+       String encryptString = new String (encryptArray); 
        return encryptString; 
 
         //get message at index 0 
